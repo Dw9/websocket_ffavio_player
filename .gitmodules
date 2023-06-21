@@ -1,0 +1,3 @@
+[submodule "deps/ZLMediaKit"]
+	path = deps/ZLMediaKit
+	url = https://gitee.com/xia-chu/ZLMediaKit.git
