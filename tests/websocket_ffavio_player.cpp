@@ -123,8 +123,11 @@ public:
 
 
 };
-
+#if defined(SDL_MAIN_NEEDED) || defined(SDL_MAIN_AVAILABLE)
+#undef main
+#endif
 int main(int argc, char *argv[]) {
+
 
 
     //设置日志
@@ -132,7 +135,7 @@ int main(int argc, char *argv[]) {
     Logger::Instance().setWriter(std::make_shared<AsyncLogWriter>());
     Logger::Instance().setWriter(std::make_shared<AsyncLogWriter>());
 
-    std::string url  = "ws://192.168.3.72/live/haikang.live.flv";
+    std::string url  = "ws://192.168.3.15/live/test.live.flv";
 
     auto player = std::make_shared<wsPlayer>();
     player->start_l(url);

@@ -156,7 +156,7 @@ int XDecodeVideo::InitRenderWindows(const char* videoHwnd) {
         //av_log(NULL, //av_log_ERROR, "videoHwnd == nullptr\n");
         return -1;
     }
-    m_videoH = (HWND)videoHwnd;
+    m_videoH = (void*)videoHwnd;
     return 0;
 }
 
@@ -341,7 +341,7 @@ bool XDecodeVideo::Open(AVCodecParameters* para, AVFormatContext* inputContext, 
         });
 
         if (!_context) {
-            throw std::runtime_error("创建解码器失败");
+            throw std::runtime_error("create codec failed");
         }
 
 
@@ -386,7 +386,7 @@ bool XDecodeVideo::Open(AVCodecParameters* para, AVFormatContext* inputContext, 
             continue;
         }
         std::cout<<"open codec failed: " << ffmpeg_err(ret)<<std::endl;
-        throw std::runtime_error("打开解码器失败");
+        throw std::runtime_error("open codec failed");
     }
     return true;
 }

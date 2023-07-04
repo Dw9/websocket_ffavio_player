@@ -14,8 +14,9 @@
 #include <mutex>
 #include <functional>
 
+
 #define DVX2 0
-using HWND = void*;
+
 
 class Ticker_ {
 public:
@@ -53,7 +54,7 @@ public:
     virtual ~XDecodeVideo();
     //�򿪽�����,���ܳɹ�����ͷ�para�ռ�
     virtual bool Open(AVCodecParameters* para, AVFormatContext* inputContext,  int media_type = 0);
-    HWND  getVideoHwnd() {
+    void*  getVideoHwnd() {
         return m_videoH ? m_videoH : nullptr;
     }
     void onDecode(const AVFrame* frame);
@@ -82,7 +83,7 @@ protected:
     bool m_getPict = false;                    //��ͼ��־λ
     bool m_bAccel = true;
     std::mutex m_mux;
-    HWND m_videoH = nullptr;
+    void* m_videoH = nullptr;
     AVFormatContext* m_outputContext = nullptr;  //����Ҫ�ͷ�  ����demux��
     AVFormatContext* m_inputContext =  nullptr;
 
